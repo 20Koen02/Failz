@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "778075183813",
+    "project_id": "failz-73fb4",
+    "storage_bucket": "failz-73fb4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:778075183813:android:6e3843b3e12314018faeac",
+        "android_client_info": {
+          "package_name": "nl.koen02.failz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "778075183813-nhvv3njscd1g8j3365ag0novgbdlglt7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "nl.koen02.failz",
+            "certificate_hash": "471cf00209baa2587b55883f9b046d5cfae418a6"
+          }
+        },
+        {
+          "client_id": "778075183813-5hf2jfpp7k3fres1lukamn9opu9oqbqj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCay-bTiYqJualIs4andl0c9sp8oU2XwR8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "778075183813-5hf2jfpp7k3fres1lukamn9opu9oqbqj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
