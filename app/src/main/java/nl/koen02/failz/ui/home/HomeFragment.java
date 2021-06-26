@@ -9,16 +9,19 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import nl.koen02.failz.R;
+import nl.koen02.failz.data.FirebaseService;
 import nl.koen02.failz.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
+    private FirebaseService firebaseService = new FirebaseService();
 
     private RecyclerView recyclerView;
     private RecyclerViewAdapter recyclerViewAdapter;
