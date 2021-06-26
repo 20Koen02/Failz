@@ -1,28 +1,34 @@
 package nl.koen02.failz.ui.home;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import java.util.Locale;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeViewModel extends ViewModel {
 
-    private final MutableLiveData<String> mText;
-    private int counter;
+    private static HomeViewModel INSTANCE;
+    private List<ListItemData> itemList;
 
     public HomeViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("Button pressed 0 times");
-        counter = 0;
+        itemList = new ArrayList<>();
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public static HomeViewModel getInstance() {
+        if (INSTANCE == null) INSTANCE = new HomeViewModel();
+        return INSTANCE;
     }
 
-    public void setTextButtonClicked() {
-        this.counter++;
-        mText.setValue(String.format(Locale.getDefault(), "Button pressed %d times", this.counter));
+    public List<ListItemData> getItemList() {
+        return itemList;
+    }
+
+    public void prepareList(RecyclerViewAdapter recyclerViewAdapter){
+        itemList.clear();
+        ListItemData item = new ListItemData("IKPMD", Vaksoort.KEUZEVAK, 9.5f, 3);
+        itemList.add(item);
+        ListItemData item2 = new ListItemData("ICOMMHA", Vaksoort.HOOFDFASE, 3.2f, 3);
+        itemList.add(item2);
+        recyclerViewAdapter.notifyDataSetChanged();
     }
 }

@@ -7,8 +7,13 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
+    <string name="menu_home">Overzicht</string>
     <string name="menu_home_button">Click this</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+
+
+    <string name="vaksoort_propedeuse">Propedeuse</string>
+    <string name="vaksoort_hoofdfase">Hoofdfase</string>
+    <string name="vaksoort_keuzevak">Keuzevak</string>
 </resources>
