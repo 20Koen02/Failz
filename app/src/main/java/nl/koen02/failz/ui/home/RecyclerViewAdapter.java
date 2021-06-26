@@ -1,5 +1,6 @@
 package nl.koen02.failz.ui.home;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 break;
         }
         holder.cijfer.setText(String.format(Locale.ENGLISH, "%.1f", data.getCijfer()));
+
+        holder.cijfer.setTextColor(data.getCijfer() < 5.5 ? Color.rgb(170, 0, 0) : Color.rgb(0, 170, 0));
+
         holder.ec.setText(String.format(Locale.ENGLISH, "%d EC", data.getEc()));
         holder.cardView.setOnClickListener(v -> clickListener.onItemClick(data));
 
@@ -78,8 +82,4 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             cardView = itemView.findViewById(R.id.cardView);
         }
     }
-}
-
-interface ClickListener<T> {
-    void onItemClick(T data);
 }
