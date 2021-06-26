@@ -13,6 +13,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import nl.koen02.failz.R;
 import nl.koen02.failz.data.FirebaseService;
 import nl.koen02.failz.databinding.FragmentHomeBinding;
@@ -38,7 +42,17 @@ public class HomeFragment extends Fragment {
         recyclerViewAdapter = new RecyclerViewAdapter(homeViewModel.getItemList());
         homeViewModel.prepareList(recyclerViewAdapter);
 
-        recyclerViewAdapter.setOnItemClickListener(data -> Toast.makeText(getActivity(), data.getCode(), Toast.LENGTH_SHORT).show());
+        recyclerViewAdapter.setOnItemClickListener(data -> {
+
+            Map<String, Object> subject = new HashMap<>();
+
+            subject.put("code", "IPSEN5");
+            subject.put("ec", 5);
+            subject.put("type", "HOOFDFASE");
+            subject.put("userId", "abc");
+
+            firebaseService.editSubject("j0DIlejf4D5NgXVrzuIZ", subject);
+        });
 
         recyclerView.setAdapter(recyclerViewAdapter);
 
