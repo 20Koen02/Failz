@@ -23,6 +23,14 @@ public class HomeViewModel extends ViewModel {
         return itemList;
     }
 
+    public void addItemToList(ListItemData item) {
+        itemList.add(item);
+    }
+
+    public void addItemsToList(List<ListItemData> items) {
+        itemList.addAll(items);
+    }
+
     public void prepareList(RecyclerViewAdapter recyclerViewAdapter){
         itemList.clear();
         ListItemData item = new ListItemData("IKPMD", Vaksoort.KEUZEVAK, 9.5f, 3);
