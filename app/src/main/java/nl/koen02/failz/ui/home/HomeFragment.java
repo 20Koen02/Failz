@@ -14,8 +14,17 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.Objects;
+
 import nl.koen02.failz.R;
 import nl.koen02.failz.data.FirebaseService;
+import nl.koen02.failz.data.model.Subject;
 import nl.koen02.failz.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
@@ -39,7 +48,40 @@ public class HomeFragment extends Fragment {
         recyclerView = root.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerViewAdapter = new RecyclerViewAdapter(homeViewModel.getItemList());
-        homeViewModel.prepareList(recyclerViewAdapter);
+
+        homeViewModel.setRecyclerViewAdapter(recyclerViewAdapter);
+
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+
+            FirebaseService firebaseService = new FirebaseService();
+
+            Task<QuerySnapshot> task = firebaseService.getSubjectsForUser(
+                    FirebaseAuth.getInstance().getCurrentUser().getUid()
+            );
+
+            task.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+
+                            Subject subject = document.toObject(Subject.class);
+
+                            homeViewModel.addItemToList(
+                                    new ListItemData(
+                                            subject.getCode(),
+                                            subject.getType(),
+                                            subject.getScore(),
+                                            subject.getEc()
+                                    )
+                            );
+                        }
+                    } else {
+                        Log.d("SUBJECT_ERROR", "Error getting documents: ", task.getException());
+                    }
+                }
+            });
+        }
 
         recyclerViewAdapter.setOnItemClickListener(data -> {
             Bundle bundle = new Bundle();

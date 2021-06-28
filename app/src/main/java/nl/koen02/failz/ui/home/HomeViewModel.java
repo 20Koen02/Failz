@@ -9,6 +9,7 @@ public class HomeViewModel extends ViewModel {
 
     private static HomeViewModel INSTANCE;
     private List<ListItemData> itemList;
+    private RecyclerViewAdapter recyclerViewAdapter;
 
     public HomeViewModel() {
         itemList = new ArrayList<>();
@@ -25,18 +26,15 @@ public class HomeViewModel extends ViewModel {
 
     public void addItemToList(ListItemData item) {
         itemList.add(item);
+        recyclerViewAdapter.notifyDataSetChanged();
     }
 
     public void addItemsToList(List<ListItemData> items) {
         itemList.addAll(items);
+        recyclerViewAdapter.notifyDataSetChanged();
     }
 
-    public void prepareList(RecyclerViewAdapter recyclerViewAdapter){
-        itemList.clear();
-        ListItemData item = new ListItemData("IKPMD", Vaksoort.KEUZEVAK, 9.5f, 3);
-        itemList.add(item);
-        ListItemData item2 = new ListItemData("ICOMMHA", Vaksoort.HOOFDFASE, 3.2f, 3);
-        itemList.add(item2);
-        recyclerViewAdapter.notifyDataSetChanged();
+    public void setRecyclerViewAdapter(RecyclerViewAdapter recyclerViewAdapter) {
+        this.recyclerViewAdapter = recyclerViewAdapter;
     }
 }
