@@ -1,6 +1,7 @@
 package nl.koen02.failz.ui.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,10 @@ import androidx.lifecycle.ViewModelProvider;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import nl.koen02.failz.R;
 import nl.koen02.failz.data.FirebaseService;
@@ -38,7 +43,8 @@ public class HomeFragment extends Fragment {
         recyclerViewAdapter = new RecyclerViewAdapter(homeViewModel.getItemList());
         homeViewModel.prepareList(recyclerViewAdapter);
 
-        recyclerViewAdapter.setOnItemClickListener(data -> Toast.makeText(getActivity(), data.getCode(), Toast.LENGTH_SHORT).show());
+        recyclerViewAdapter.setOnItemClickListener(data -> {
+        });
 
         recyclerView.setAdapter(recyclerViewAdapter);
 
