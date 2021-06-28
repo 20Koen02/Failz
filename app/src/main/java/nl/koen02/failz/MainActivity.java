@@ -31,6 +31,7 @@ import java.util.Collections;
 import java.util.List;
 
 import nl.koen02.failz.databinding.ActivityMainBinding;
+import nl.koen02.failz.ui.home.HomeViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -108,6 +109,13 @@ public class MainActivity extends AppCompatActivity {
             this.signOut();
             return false;
         });
+
+        MenuItem refresh = menu.findItem(R.id.action_refresh);
+        refresh.setOnMenuItemClickListener(item -> {
+            HomeViewModel.getInstance().refreshDataFromFirestore();
+            return false;
+        });
+
         return true;
     }
 

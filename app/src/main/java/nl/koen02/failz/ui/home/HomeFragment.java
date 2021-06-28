@@ -50,38 +50,7 @@ public class HomeFragment extends Fragment {
         recyclerViewAdapter = new RecyclerViewAdapter(homeViewModel.getItemList());
 
         homeViewModel.setRecyclerViewAdapter(recyclerViewAdapter);
-
-        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-
-            FirebaseService firebaseService = new FirebaseService();
-
-            Task<QuerySnapshot> task = firebaseService.getSubjectsForUser(
-                    FirebaseAuth.getInstance().getCurrentUser().getUid()
-            );
-
-            task.addOnCompleteListener(task1 -> {
-                if (task1.isSuccessful()) {
-                    assert task1.getResult() != null;
-                    homeViewModel.resetItemList();
-                    for (QueryDocumentSnapshot document : task1.getResult()) {
-
-                        Subject subject = document.toObject(Subject.class);
-
-                        homeViewModel.addItemToList(
-                                new ListItemData(
-                                        subject.getCode(),
-                                        subject.getType(),
-                                        subject.getScore(),
-                                        subject.getEc(),
-                                        document.getId()
-                                )
-                        );
-                    }
-                } else {
-                    Log.d("SUBJECT_ERROR", "Error getting documents: ", task1.getException());
-                }
-            });
-        }
+        homeViewModel.refreshDataFromFirestore();
 
         recyclerViewAdapter.setOnItemClickListener(data -> {
             Bundle bundle = new Bundle();
