@@ -40,5 +40,8 @@
             android:name="isEditing"
             app:argType="boolean"
             android:defaultValue="false" />
+        <action
+            android:id="@+id/action_formFragment_to_nav_home"
+            app:destination="@id/nav_home" />
     </fragment>
 </navigation>

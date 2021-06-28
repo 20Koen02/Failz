@@ -7,12 +7,14 @@ public class ListItemData implements Serializable {
     private Vaksoort vaksoort;
     private Float cijfer;
     private Integer ec;
+    private String id;
 
-    public ListItemData(String code, Vaksoort vaksoort, Float cijfer, Integer ec) {
+    public ListItemData(String code, Vaksoort vaksoort, Float cijfer, Integer ec, String id) {
         this.code = code;
         this.vaksoort = vaksoort;
         this.cijfer = cijfer;
         this.ec = ec;
+        this.id = id;
     }
 
     public String getCode() {
@@ -45,5 +47,13 @@ public class ListItemData implements Serializable {
 
     public void setEc(Integer ec) {
         this.ec = ec;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

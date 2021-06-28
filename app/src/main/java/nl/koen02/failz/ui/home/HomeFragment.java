@@ -72,7 +72,8 @@ public class HomeFragment extends Fragment {
                                         subject.getCode(),
                                         subject.getType(),
                                         subject.getScore(),
-                                        subject.getEc()
+                                        subject.getEc(),
+                                        document.getId()
                                 )
                         );
                     }
