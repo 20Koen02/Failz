@@ -28,25 +28,19 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(binding.appBarMain.toolbar);
 
-        DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
-                .setOpenableLayout(drawer)
-                .build();
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_home).build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-////        getMenuInflater().inflate(R.menu.main, menu);
-//        return true;
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 
     @Override
     public boolean onSupportNavigateUp() {

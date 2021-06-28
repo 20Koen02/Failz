@@ -5,7 +5,7 @@
     <string name="nav_header_title">Failz</string>
     <string name="nav_header_subtitle">App om je studievoortgang bij te houden</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_logout">Sign Out</string>
 
     <string name="menu_home">Overzicht</string>
     <string name="menu_home_button">Click this</string>
