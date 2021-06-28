@@ -31,6 +31,7 @@ import java.util.Collections;
 import java.util.List;
 
 import nl.koen02.failz.databinding.ActivityMainBinding;
+import nl.koen02.failz.ui.home.HomeViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,12 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
             new FirebaseAuthUIActivityResultContract(),
-            new ActivityResultCallback<FirebaseAuthUIAuthenticationResult>() {
-                @Override
-                public void onActivityResult(FirebaseAuthUIAuthenticationResult result) {
-                    onSignInResult(result);
-                }
-            }
+            this::onSignInResult
     );
 
     public void createSignInIntent() {
@@ -79,11 +75,7 @@ public class MainActivity extends AppCompatActivity {
     public void signOut() {
         AuthUI.getInstance()
                 .signOut(this)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    public void onComplete(@NonNull Task<Void> task) {
-                        createSignInIntent();
-                    }
-                });
+                .addOnCompleteListener(task -> createSignInIntent());
     }
 
     @Override
@@ -117,6 +109,13 @@ public class MainActivity extends AppCompatActivity {
             this.signOut();
             return false;
         });
+
+        MenuItem refresh = menu.findItem(R.id.action_refresh);
+        refresh.setOnMenuItemClickListener(item -> {
+            HomeViewModel.getInstance().refreshDataFromFirestore();
+            return false;
+        });
+
         return true;
     }
 

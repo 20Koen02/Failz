@@ -5,11 +5,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,49 +41,21 @@ public class HomeFragment extends Fragment {
 
         homeViewModel = HomeViewModel.getInstance();
 
-        binding.fab.setOnClickListener(view -> Toast.makeText(getActivity(), "Clicked on add button", Toast.LENGTH_SHORT).show());
+        binding.fab.setOnClickListener(view -> {
+            NavHostFragment.findNavController(this).navigate(R.id.action_nav_home_to_formFragment);
+        });
 
         recyclerView = root.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerViewAdapter = new RecyclerViewAdapter(homeViewModel.getItemList());
 
         homeViewModel.setRecyclerViewAdapter(recyclerViewAdapter);
-
-        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-
-            FirebaseService firebaseService = new FirebaseService();
-
-            Task<QuerySnapshot> task = firebaseService.getSubjectsForUser(
-                    FirebaseAuth.getInstance().getCurrentUser().getUid()
-            );
-
-            task.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if (task.isSuccessful()) {
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-
-                            Subject subject = document.toObject(Subject.class);
-
-                            homeViewModel.addItemToList(
-                                    new ListItemData(
-                                            subject.getCode(),
-                                            subject.getType(),
-                                            subject.getScore(),
-                                            subject.getEc()
-                                    )
-                            );
-                        }
-                    } else {
-                        Log.d("SUBJECT_ERROR", "Error getting documents: ", task.getException());
-                    }
-                }
-            });
-        }
+        homeViewModel.refreshDataFromFirestore();
 
         recyclerViewAdapter.setOnItemClickListener(data -> {
             Bundle bundle = new Bundle();
             bundle.putSerializable("listItemData", data);
+            bundle.putBoolean("isEditing", true);
             NavHostFragment.findNavController(this).navigate(R.id.action_nav_home_to_formFragment, bundle);
         });
 

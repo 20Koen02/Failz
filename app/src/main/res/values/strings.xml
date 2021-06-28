@@ -6,12 +6,16 @@
     <string name="nav_header_subtitle">App om je studievoortgang bij te houden</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_logout">Sign Out</string>
+    <string name="refresh">Refresh</string>
 
     <string name="menu_home">Overzicht</string>
     <string name="menu_home_button">Click this</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_form">Wijzigen</string>
+    <string name="menu_form_add">Toevoegen</string>
+    <string name="menu_form_edit_title">Wijzig een vak</string>
+    <string name="edit_or_add_placeholder">Voeg een vak toe</string>
 
 
     <string name="vaksoort_propedeuse">Propedeuse</string>
