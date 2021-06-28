@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Locale;
 
 import nl.koen02.failz.R;
+import nl.koen02.failz.ui.shared.ListItemData;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>{
 

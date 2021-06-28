@@ -1,4 +1,4 @@
-package nl.koen02.failz.ui.home;
+package nl.koen02.failz.ui.shared;
 
 import java.io.Serializable;
 
@@ -8,13 +8,15 @@ public class ListItemData implements Serializable {
     private Float cijfer;
     private Integer ec;
     private String id;
+    private String note;
 
-    public ListItemData(String code, Vaksoort vaksoort, Float cijfer, Integer ec, String id) {
+    public ListItemData(String code, Vaksoort vaksoort, Float cijfer, Integer ec, String note, String id) {
         this.code = code;
         this.vaksoort = vaksoort;
         this.cijfer = cijfer;
         this.ec = ec;
         this.id = id;
+        this.note = note;
     }
 
     public String getCode() {
@@ -55,5 +57,13 @@ public class ListItemData implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 }

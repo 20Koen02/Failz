@@ -11,13 +11,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import nl.koen02.failz.data.FirebaseService;
 import nl.koen02.failz.data.model.Subject;
+import nl.koen02.failz.ui.shared.ListItemData;
 
 public class HomeViewModel extends ViewModel {
 
@@ -81,6 +80,7 @@ public class HomeViewModel extends ViewModel {
                                         subject.getType(),
                                         subject.getScore(),
                                         subject.getEc(),
+                                        subject.getNote(),
                                         document.getId()
                                 )
                         );

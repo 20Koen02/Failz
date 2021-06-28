@@ -1,6 +1,6 @@
 package nl.koen02.failz.data.model;
 
-import nl.koen02.failz.ui.home.Vaksoort;
+import nl.koen02.failz.ui.shared.Vaksoort;
 
 public class Subject {
     private String code;
@@ -8,6 +8,7 @@ public class Subject {
     private float score;
     private Vaksoort type;
     private String userId;
+    private String note;
 
     public Subject() {
     }
@@ -50,5 +51,13 @@ public class Subject {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 }

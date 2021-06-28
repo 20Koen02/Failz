@@ -16,24 +16,13 @@
     </fragment>
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="nl.koen02.failz.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="nl.koen02.failz.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-    <fragment
         android:id="@+id/formFragment"
         android:name="nl.koen02.failz.ui.form.FormFragment"
         android:label="@string/menu_form"
         tools:layout="@layout/form_fragment" >
         <argument
             android:name="listItemData"
-            app:argType="nl.koen02.failz.ui.home.ListItemData"
+            app:argType="nl.koen02.failz.ui.shared.ListItemData"
             app:nullable="true"
             android:defaultValue="@null" />
         <argument
