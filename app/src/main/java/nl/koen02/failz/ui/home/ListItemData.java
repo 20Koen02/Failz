@@ -1,6 +1,8 @@
 package nl.koen02.failz.ui.home;
 
-public class ListItemData {
+import java.io.Serializable;
+
+public class ListItemData implements Serializable {
     private String code;
     private Vaksoort vaksoort;
     private float cijfer;

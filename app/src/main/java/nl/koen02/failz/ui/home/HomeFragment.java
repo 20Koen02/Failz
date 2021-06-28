@@ -9,14 +9,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import nl.koen02.failz.R;
 import nl.koen02.failz.data.FirebaseService;
@@ -38,12 +34,17 @@ public class HomeFragment extends Fragment {
 
         homeViewModel = HomeViewModel.getInstance();
 
+        binding.fab.setOnClickListener(view -> Toast.makeText(getActivity(), "Clicked on add button", Toast.LENGTH_SHORT).show());
+
         recyclerView = root.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerViewAdapter = new RecyclerViewAdapter(homeViewModel.getItemList());
         homeViewModel.prepareList(recyclerViewAdapter);
 
         recyclerViewAdapter.setOnItemClickListener(data -> {
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("listItemData", data);
+            NavHostFragment.findNavController(this).navigate(R.id.action_nav_home_to_formFragment, bundle);
         });
 
         recyclerView.setAdapter(recyclerViewAdapter);

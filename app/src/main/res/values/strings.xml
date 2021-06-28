@@ -11,9 +11,11 @@
     <string name="menu_home_button">Click this</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_form">Wijzigen</string>
 
 
     <string name="vaksoort_propedeuse">Propedeuse</string>
     <string name="vaksoort_hoofdfase">Hoofdfase</string>
     <string name="vaksoort_keuzevak">Keuzevak</string>
+    <string name="add">add</string>
 </resources>
