@@ -1,6 +1,7 @@
 package nl.koen02.failz.ui.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import java.util.Map;
 import nl.koen02.failz.R;
 import nl.koen02.failz.data.FirebaseService;
 import nl.koen02.failz.databinding.FragmentHomeBinding;
+import nl.koen02.failz.models.Subject;
 
 public class HomeFragment extends Fragment {
 
@@ -43,15 +45,6 @@ public class HomeFragment extends Fragment {
         homeViewModel.prepareList(recyclerViewAdapter);
 
         recyclerViewAdapter.setOnItemClickListener(data -> {
-
-            Map<String, Object> subject = new HashMap<>();
-
-            subject.put("code", "IPSEN5");
-            subject.put("ec", 5);
-            subject.put("type", "HOOFDFASE");
-            subject.put("userId", "abc");
-
-            firebaseService.editSubject("j0DIlejf4D5NgXVrzuIZ", subject);
         });
 
         recyclerView.setAdapter(recyclerViewAdapter);
