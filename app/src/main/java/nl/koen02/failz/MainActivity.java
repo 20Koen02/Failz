@@ -27,6 +27,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import nl.koen02.failz.databinding.ActivityMainBinding;
@@ -50,13 +51,16 @@ public class MainActivity extends AppCompatActivity {
         // Choose authentication providers
         List<AuthUI.IdpConfig> providers = Arrays.asList(
                 new AuthUI.IdpConfig.EmailBuilder().build(),
-                new AuthUI.IdpConfig.GoogleBuilder().build()
+                new AuthUI.IdpConfig.GoogleBuilder().build(),
+                new AuthUI.IdpConfig.GitHubBuilder().build()
         );
 
         // Create and launch sign-in intent
         Intent signInIntent = AuthUI.getInstance()
                 .createSignInIntentBuilder()
                 .setAvailableProviders(providers)
+                .setLogo(R.mipmap.ic_launcher_foreground)      // Set logo drawable
+                .setTheme(R.style.Theme_Failz)      // Set theme
                 .build();
         signInLauncher.launch(signInIntent);
     }
