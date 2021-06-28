@@ -5,11 +5,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -112,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
         MenuItem main = menu.findItem(R.id.action_logout);
         main.setOnMenuItemClickListener(item -> {
-            System.out.println("Signing out...");
+            this.signOut();
             return false;
         });
         return true;
