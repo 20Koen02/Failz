@@ -5,10 +5,10 @@ import java.io.Serializable;
 public class ListItemData implements Serializable {
     private String code;
     private Vaksoort vaksoort;
-    private float cijfer;
-    private int ec;
+    private Float cijfer;
+    private Integer ec;
 
-    public ListItemData(String code, Vaksoort vaksoort, float cijfer, int ec) {
+    public ListItemData(String code, Vaksoort vaksoort, Float cijfer, Integer ec) {
         this.code = code;
         this.vaksoort = vaksoort;
         this.cijfer = cijfer;
@@ -23,11 +23,11 @@ public class ListItemData implements Serializable {
         this.code = code;
     }
 
-    public float getCijfer() {
+    public Float getCijfer() {
         return cijfer;
     }
 
-    public void setCijfer(float cijfer) {
+    public void setCijfer(Float cijfer) {
         this.cijfer = cijfer;
     }
 
@@ -39,11 +39,11 @@ public class ListItemData implements Serializable {
         this.vaksoort = vaksoort;
     }
 
-    public int getEc() {
+    public Integer getEc() {
         return ec;
     }
 
-    public void setEc(int ec) {
+    public void setEc(Integer ec) {
         this.ec = ec;
     }
 }

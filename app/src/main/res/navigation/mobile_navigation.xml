@@ -36,5 +36,9 @@
             app:argType="nl.koen02.failz.ui.home.ListItemData"
             app:nullable="true"
             android:defaultValue="@null" />
+        <argument
+            android:name="isEditing"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
 </navigation>

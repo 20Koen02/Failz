@@ -8,7 +8,7 @@ import java.util.List;
 public class HomeViewModel extends ViewModel {
 
     private static HomeViewModel INSTANCE;
-    private List<ListItemData> itemList;
+    private final List<ListItemData> itemList;
     private RecyclerViewAdapter recyclerViewAdapter;
 
     public HomeViewModel() {
@@ -32,6 +32,10 @@ public class HomeViewModel extends ViewModel {
     public void addItemsToList(List<ListItemData> items) {
         itemList.addAll(items);
         recyclerViewAdapter.notifyDataSetChanged();
+    }
+
+    public void resetItemList() {
+        itemList.clear();
     }
 
     public void setRecyclerViewAdapter(RecyclerViewAdapter recyclerViewAdapter) {

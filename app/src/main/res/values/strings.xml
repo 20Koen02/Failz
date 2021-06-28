@@ -12,6 +12,9 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_form">Wijzigen</string>
+    <string name="menu_form_add">Toevoegen</string>
+    <string name="menu_form_edit_title">Wijzig een vak</string>
+    <string name="edit_or_add_placeholder">Voeg een vak toe</string>
 
 
     <string name="vaksoort_propedeuse">Propedeuse</string>

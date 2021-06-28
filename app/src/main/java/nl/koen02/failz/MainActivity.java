@@ -39,12 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
             new FirebaseAuthUIActivityResultContract(),
-            new ActivityResultCallback<FirebaseAuthUIAuthenticationResult>() {
-                @Override
-                public void onActivityResult(FirebaseAuthUIAuthenticationResult result) {
-                    onSignInResult(result);
-                }
-            }
+            this::onSignInResult
     );
 
     public void createSignInIntent() {
@@ -79,11 +74,7 @@ public class MainActivity extends AppCompatActivity {
     public void signOut() {
         AuthUI.getInstance()
                 .signOut(this)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    public void onComplete(@NonNull Task<Void> task) {
-                        createSignInIntent();
-                    }
-                });
+                .addOnCompleteListener(task -> createSignInIntent());
     }
 
     @Override
