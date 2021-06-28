@@ -21,7 +21,6 @@ import java.util.Map;
 import nl.koen02.failz.R;
 import nl.koen02.failz.data.FirebaseService;
 import nl.koen02.failz.databinding.FragmentHomeBinding;
-import nl.koen02.failz.models.Subject;
 
 public class HomeFragment extends Fragment {
 
