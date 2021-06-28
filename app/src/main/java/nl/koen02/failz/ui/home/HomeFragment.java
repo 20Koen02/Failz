@@ -50,6 +50,8 @@ public class HomeFragment extends Fragment {
         recyclerViewAdapter = new RecyclerViewAdapter(homeViewModel.getItemList());
 
         homeViewModel.setRecyclerViewAdapter(recyclerViewAdapter);
+        homeViewModel.setEmptyText(binding.emptyText);
+
         homeViewModel.refreshDataFromFirestore();
 
         recyclerViewAdapter.setOnItemClickListener(data -> {

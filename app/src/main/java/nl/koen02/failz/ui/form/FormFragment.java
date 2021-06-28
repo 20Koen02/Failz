@@ -49,9 +49,16 @@ public class FormFragment extends Fragment {
         assert currentUser != null;
 
         isEditing = requireArguments().getBoolean("isEditing");
+        binding.deleteVak.setVisibility(isEditing ? View.VISIBLE : View.GONE);
 
         if (isEditing) {
             listItemData = (ListItemData) requireArguments().getSerializable("listItemData");
+
+            binding.deleteVak.setOnClickListener(v -> {
+                firebaseService.deleteSubject(listItemData.getId());
+                NavHostFragment.findNavController(this).navigate(R.id.action_formFragment_to_nav_home);
+                Toast.makeText(getActivity(), "Het vak is verwijderd", Toast.LENGTH_SHORT).show();
+            });
 
             binding.formTitle.setText(R.string.menu_form_edit_title);
             binding.editCode.setText(listItemData.getCode());

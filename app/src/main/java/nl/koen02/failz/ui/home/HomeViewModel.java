@@ -1,6 +1,8 @@
 package nl.koen02.failz.ui.home;
 
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.lifecycle.ViewModel;
 
@@ -8,6 +10,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +24,7 @@ public class HomeViewModel extends ViewModel {
     private static HomeViewModel INSTANCE;
     private final List<ListItemData> itemList;
     private RecyclerViewAdapter recyclerViewAdapter;
+    private TextView emptyText;
 
     public HomeViewModel() {
         itemList = new ArrayList<>();
@@ -46,6 +51,7 @@ public class HomeViewModel extends ViewModel {
 
     public void resetItemList() {
         itemList.clear();
+
     }
 
     public void setRecyclerViewAdapter(RecyclerViewAdapter recyclerViewAdapter) {
@@ -79,10 +85,16 @@ public class HomeViewModel extends ViewModel {
                                 )
                         );
                     }
+                    recyclerViewAdapter.notifyDataSetChanged();
+                    if (emptyText != null) emptyText.setVisibility(getItemList().size() > 0 ? View.GONE : View.VISIBLE);
                 } else {
                     Log.d("SUBJECT_ERROR", "Error getting documents: ", task1.getException());
                 }
             });
         }
+    }
+
+    public void setEmptyText(TextView emptyText) {
+        this.emptyText = emptyText;
     }
 }

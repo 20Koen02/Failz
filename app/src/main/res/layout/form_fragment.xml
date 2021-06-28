@@ -149,4 +149,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_cijfer" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/delete_vak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:clickable="true"
+        android:src="@drawable/ic_baseline_delete_24"
+        app:backgroundTint="#FF5E5E"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="#FFFFFF" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_logout">Sign Out</string>
     <string name="refresh">Refresh</string>
+    <string name="empty_text">Voeg een vak toe om te starten</string>
 
     <string name="menu_home">Overzicht</string>
     <string name="menu_home_button">Click this</string>

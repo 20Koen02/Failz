@@ -56,4 +56,8 @@ public class FirebaseService {
                 .get();
 
     }
+
+    public void deleteSubject(String subjectId) {
+        this.subjectCollection.document(subjectId).delete();
+    }
 }
